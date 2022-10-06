@@ -1,9 +1,7 @@
-import {LoginComponent} from './page/login/login.component'
 import {NgModule} from '@angular/core'
 import {RouterModule, Routes} from '@angular/router'
 import {LayoutComponent} from './layout/layout.component'
 import {IndexComponent} from './page/index/index.component'
-import {RegisterComponent} from './page/register/register.component'
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/index'},
@@ -14,11 +12,11 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    component: RegisterComponent,
+    loadChildren: () => import('./page/register/register.module').then((m) => m.RegisterModule),
   },
   {
     path: 'login',
-    component: LoginComponent,
+    loadChildren: () => import('./page/login/login.module').then((m) => m.LoginModule),
   },
 ]
 
