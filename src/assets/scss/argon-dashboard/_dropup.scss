@@ -12,7 +12,7 @@
     pointer-events: none;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    will-change: transform,box-shadow;
+    will-change: transform, box-shadow;
     animation: $dropdown-animation;
 
     &.show {
@@ -26,8 +26,8 @@
     }
 
     &:after {
-      font-family: "FontAwesome";
-      content: "\f0d7";
+      font-family: 'FontAwesome';
+      content: '\f0d7';
       position: absolute;
       z-index: -1;
       bottom: $dropup-animation-arrow-bottom-position;

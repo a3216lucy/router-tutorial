@@ -63,7 +63,7 @@
 
         &:after {
           @include gradient-directional(nth($val, 1) 0%, nth($val, -1) 100%, $deg: 310deg);
-          opacity: .85;
+          opacity: 0.85;
         }
       }
     }

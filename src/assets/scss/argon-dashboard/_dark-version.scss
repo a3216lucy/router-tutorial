@@ -1,7 +1,7 @@
 .dark-version {
   background-color: $dark-version-bg-color !important;
 
-  > div[class*='bg-']{
+  > div[class*='bg-'] {
     background-color: $dark-version-bg-color !important;
   }
 
@@ -79,7 +79,7 @@
 
     p {
       color: $white !important;
-      opacity: .6;
+      opacity: 0.6;
     }
   }
 
@@ -90,15 +90,21 @@
 
   .swal2-html-container {
     color: $white !important;
-    opacity: .6;
+    opacity: 0.6;
   }
 
-  h1, .h1,
-  h2, .h2,
-  h3, .h3,
-  h4, .h4,
-  h5, .h5,
-  h6, .h6,
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6,
   a:not(.dropdown-item):not(.choices__item):not(.leaflet-control-zoom-in):not(.leaflet-control-zoom-out):not(.btn):not(.nav-link):not(.fixed-plugin-button),
   .table thead tr th,
   .kanban-title-board {
@@ -133,7 +139,7 @@
     .accordion-button {
       border-color: $dark-version-border-color !important;
       color: $white;
-      opacity: .8;
+      opacity: 0.8;
     }
   }
 
@@ -149,7 +155,7 @@
   .list-group-item,
   .multisteps-form__panel {
     background-color: transparent !important;
-    border-color: rgba(255, 255, 255, .15) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
   }
 
   .nav {
@@ -177,7 +183,7 @@
 
     p {
       color: $white !important;
-      opacity: .6;
+      opacity: 0.6;
     }
   }
 
@@ -199,13 +205,12 @@
     border-color: $fc-theme-standard-dark-border-color;
   }
 
-
   // Datatable changes
-  .dataTable-sorter::after{
+  .dataTable-sorter::after {
     border-bottom-color: $white;
   }
 
-  .dataTable-sorter::before{
+  .dataTable-sorter::before {
     border-top-color: $white;
   }
 
@@ -214,11 +219,12 @@
     stroke: $light;
   }
 
-  .ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill{
+  .ql-snow .ql-fill,
+  .ql-snow .ql-stroke.ql-fill {
     fill: $light;
   }
 
-  .ql-toolbar.ql-snow .ql-picker-label{
+  .ql-toolbar.ql-snow .ql-picker-label {
     color: $light;
   }
 
@@ -227,9 +233,9 @@
       .nav-item {
         .nav-link {
           color: $white;
-          opacity: .8;
+          opacity: 0.8;
 
-          &[data-bs-toggle="collapse"]:after {
+          &[data-bs-toggle='collapse']:after {
             color: $white;
           }
 
@@ -243,7 +249,7 @@
             .nav-item {
               .nav-link {
                 color: $white;
-                opacity: .6;
+                opacity: 0.6;
 
                 &.active {
                   opacity: 1;
@@ -255,7 +261,6 @@
       }
     }
   }
-
 
   .dropdown {
     .dropdown-menu {

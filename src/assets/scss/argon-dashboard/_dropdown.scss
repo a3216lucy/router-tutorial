@@ -11,20 +11,20 @@
     }
 
     .dropdown-toggle {
-      &:after{
-        content: "\f107";
+      &:after {
+        content: '\f107';
         font: normal normal normal 14px/1 FontAwesome;
         border: none;
         vertical-align: middle;
         font-weight: $font-weight-bold;
       }
-      &.show{
-        &:after{
+      &.show {
+        &:after {
           transform: $dropdown-toggle-arrow-transform;
         }
       }
-      &:after{
-         transition: $dropdown-toggle-arrow-transition;
+      &:after {
+        transition: $dropdown-toggle-arrow-transition;
       }
     }
   }
@@ -39,7 +39,7 @@
       animation: $dropdown-animation;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
-      will-change: animation,box-shadow;
+      will-change: animation, box-shadow;
     }
 
     &.dropdown-hover:hover > .dropdown-menu .dropdown-hover:hover > .dropdown-menu,
@@ -72,8 +72,8 @@
 
     .dropdown-menu {
       &:before {
-        font-family: "FontAwesome";
-        content: "\f0d8";
+        font-family: 'FontAwesome';
+        content: '\f0d8';
         position: absolute;
         top: 0;
         left: $dropdown-animation-arrow-left-position;
@@ -107,12 +107,12 @@
         transition: $dropdown-transition;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
-        will-change: transform,box-shadow;
+        will-change: transform, box-shadow;
         box-shadow: $dropdown-box-shadow;
 
         &:before {
-          font-family: "FontAwesome";
-          content: "\f0d8";
+          font-family: 'FontAwesome';
+          content: '\f0d8';
           position: absolute;
           top: 0;
           left: $dropdown-animation-arrow-left-position;
@@ -154,12 +154,12 @@
       transition: $dropdown-transition;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
-      will-change: animation,box-shadow;
+      will-change: animation, box-shadow;
       box-shadow: $dropdown-box-shadow;
 
       &:before {
-        font-family: "FontAwesome";
-        content: "\f0d8";
+        font-family: 'FontAwesome';
+        content: '\f0d8';
         position: absolute;
         top: 0;
         left: $dropdown-animation-arrow-left-position;
@@ -191,12 +191,10 @@
     }
   }
 
-
-
   .dropdown.nav-item .dropdown-menu-animation {
     display: block;
     height: 0;
-    transition: all .35s ease;
+    transition: all 0.35s ease;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     opacity: 0;
@@ -227,12 +225,12 @@
       left: 0;
       top: 0;
       z-index: -1;
-      transition: left .35s ease;
+      transition: left 0.35s ease;
     }
-    &.dropdown-menu-end{
+    &.dropdown-menu-end {
       right: 0 !important;
       left: auto !important;
-      &:before{
+      &:before {
         right: $dropdown-animation-arrow-left-position;
         left: auto;
       }
@@ -250,7 +248,7 @@
   }
 }
 
-.dropdown .dropdown-menu .dropdown-item+.dropdown-menu {
+.dropdown .dropdown-menu .dropdown-item + .dropdown-menu {
   right: $dropdown-subitem-position-right;
   left: auto;
   top: 0;
@@ -276,9 +274,9 @@
 }
 
 @include media-breakpoint-down(xl) {
- .dropdown-lg-responsive {
-   min-width: $dropdown-lg-width-responsive;
- }
+  .dropdown-lg-responsive {
+    min-width: $dropdown-lg-width-responsive;
+  }
 }
 
 // Keyframes
@@ -303,6 +301,6 @@
 
   to {
     opacity: 0;
-    transform: translate(0, 10px)
+    transform: translate(0, 10px);
   }
 }

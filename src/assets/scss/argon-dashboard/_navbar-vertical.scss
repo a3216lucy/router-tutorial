@@ -2,7 +2,7 @@
 // Vertical navbar + Sidenav
 //
 
-@use "sass:math";
+@use 'sass:math';
 
 .navbar-vertical {
   .navbar-brand > img,
@@ -79,7 +79,7 @@
             height: $navbar-vertical-inner;
           }
           // Container
-          > [class*="container"] {
+          > [class*='container'] {
             flex-direction: column;
             align-items: stretch;
             min-height: 100%;
@@ -142,7 +142,7 @@
 
           .lavalamp-object {
             width: calc(100% - 1rem) !important;
-            background: theme-color("primary");
+            background: theme-color('primary');
             color: color-yiq($primary);
             margin-right: 0.5rem;
             margin-left: 0.5rem;
@@ -169,7 +169,7 @@
 .sidenav {
   // Define colors
   @each $color, $value in $theme-colors {
-    &[data-color="#{$color}"] {
+    &[data-color='#{$color}'] {
       .navbar-nav > .nav-item > .nav-link.active {
         @include gradient-directional(nth(#{$value}, 1) 0%, nth(#{$value}, -1) 100%, $deg: 310deg);
 
@@ -277,7 +277,7 @@
     }
 
     .sidenav {
-      &.fixed-start+.main-content {
+      &.fixed-start + .main-content {
         margin-left: 0 !important;
       }
     }
@@ -325,13 +325,13 @@
     width: calc(100% - (#{$navbar-vertical-open-width} + #{$spacer * 1.5} * 3));
   }
 
-  &.fixed-top + [class*="container"] {
+  &.fixed-top + [class*='container'] {
     margin-top: 7.1875rem !important;
   }
 }
 // Navbar Vertical Extend
 .navbar-vertical {
-  .navbar-nav .nav-link[data-bs-toggle="collapse"] {
+  .navbar-nav .nav-link[data-bs-toggle='collapse'] {
     &:after {
       display: inline-block;
       font-style: normal;
@@ -340,13 +340,13 @@
       -webkit-font-smoothing: antialiased;
       font-family: 'Font Awesome 5 Free';
       font-weight: 700;
-      content: "\f107";
+      content: '\f107';
       margin-left: auto;
-      color: rgba($dark-gradient-state,0.5);
+      color: rgba($dark-gradient-state, 0.5);
       @include transition($transition-base);
     }
     // Expanded
-    &[aria-expanded="true"] {
+    &[aria-expanded='true'] {
       &:after {
         color: $dark-gradient-state;
         transform: rotate(180deg);
@@ -366,9 +366,9 @@
               position: relative;
               background-color: transparent;
               box-shadow: none;
-              color: rgba($dark-gradient-state,0.5);
+              color: rgba($dark-gradient-state, 0.5);
               margin-left: $navbar-vertical-collapse-margin-left;
-              
+
               &.active {
                 color: $dark-gradient-state;
               }
@@ -431,7 +431,7 @@
         .nav-link {
           color: $white;
 
-          &[data-bs-toggle="collapse"]:after {
+          &[data-bs-toggle='collapse']:after {
             color: $white;
           }
         }
@@ -442,7 +442,7 @@
             .nav-item {
               .nav-link {
                 color: $white;
-                opacity: .8;
+                opacity: 0.8;
               }
               &.active {
                 .nav-link.active {
@@ -548,8 +548,8 @@
             opacity: 1;
           }
 
-          &[data-bs-toggle="collapse"]:after {
-            content: "";
+          &[data-bs-toggle='collapse']:after {
+            content: '';
           }
         }
 
@@ -566,8 +566,8 @@
                   content: none;
                 }
 
-                &[data-bs-toggle="collapse"]:after {
-                  content: "\f107";
+                &[data-bs-toggle='collapse']:after {
+                  content: '\f107';
                 }
               }
             }
@@ -614,8 +614,8 @@
               min-width: 0;
             }
 
-            &[data-bs-toggle="collapse"]:after {
-              content: "\f107";
+            &[data-bs-toggle='collapse']:after {
+              content: '\f107';
             }
           }
 
@@ -628,7 +628,7 @@
                   margin-left: $navbar-vertical-collapse-margin-left;
 
                   &:before {
-                    content: "";
+                    content: '';
                   }
                 }
 
