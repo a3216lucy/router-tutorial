@@ -89,7 +89,13 @@
               <input type="text" class="form-control" placeholder="Name" aria-label="Name" />
             </div>
             <div class="mb-3">
-              <input type="email" class="form-control" placeholder="Email" aria-label="Email" />
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>email</mat-label>
+                <input matInput type="text" />
+                <button matSuffix mat-icon-button aria-label="Clear">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
             </div>
             <div class="mb-3">
               <input type="password" class="form-control" placeholder="Password" aria-label="Password" />
