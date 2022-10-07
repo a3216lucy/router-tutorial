@@ -75,7 +75,7 @@
                 <p class="mb-0">Enter your email and password to sign in</p>
               </div>
               <div class="card-body">
-                <form role="form" #mForm="ngForm" [formGroup]="form" (ngSubmit)="login()">
+                <form role="form" #formRef="ngForm" [formGroup]="form" (ngSubmit)="login()">
                   <div class="mb-3">
                     <input
                       type="email"
@@ -84,6 +84,15 @@
                       aria-label="Email"
                       formControlName="email"
                     />
+
+                    <p
+                      *ngIf="isInvalid(form.controls['email'], formRef) && form.controls['email'].errors?.['required']"
+                    >
+                      請輸入 email
+                    </p>
+                    <p *ngIf="isInvalid(form.controls['email'], formRef) && form.controls['email'].errors?.['email']">
+                      請輸入正確的 email
+                    </p>
                   </div>
                   <div class="mb-3">
                     <input

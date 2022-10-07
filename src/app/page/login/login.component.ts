@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core'
-import {FormBuilder, FormGroup} from '@angular/forms'
+import {AbstractControl, FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms'
 
 /**
  * 登入頁元件
@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
     this.form = this.fb.group({
       //email
       email: this.fb.control('', {
-        // validators: [Validators.required, Validators.email],
-        // updateOn: 'blur',
+        validators: [Validators.required, Validators.email],
+        updateOn: 'submit',
       }),
       password: this.fb.control('', {}),
       isRemember: this.fb.control(false, {}),
@@ -34,8 +34,14 @@ export class LoginComponent implements OnInit {
 
   /**
    * 登入
-   *  */
+   */
   login(): void {
     console.log(this.form.value)
+    if (this.form.invalid) return
+  }
+
+  /** 驗證失敗 */
+  isInvalid(control: AbstractControl, formRef: FormGroupDirective): boolean {
+    return control.invalid && (control.touched || formRef.submitted)
   }
 }
