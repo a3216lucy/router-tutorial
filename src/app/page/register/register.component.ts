@@ -1,12 +1,10 @@
-import {Component, OnInit} from '@angular/core'
+import {Component} from '@angular/core'
 
+/**
+ * 註冊頁元件
+ */
 @Component({
-  selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-}
+export class RegisterComponent {}
