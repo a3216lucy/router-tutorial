@@ -84,15 +84,9 @@
                       aria-label="Email"
                       formControlName="email"
                     />
-
-                    <p
-                      *ngIf="isInvalid(form.controls['email'], formRef) && form.controls['email'].errors?.['required']"
-                    >
-                      請輸入 email
-                    </p>
-                    <p *ngIf="isInvalid(form.controls['email'], formRef) && form.controls['email'].errors?.['email']">
-                      請輸入正確的 email
-                    </p>
+                    <mat-error>
+                      <app-control-messages [control]="form.controls['email']"></app-control-messages>
+                    </mat-error>
                   </div>
                   <div class="mb-3">
                     <input

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core'
-import {AbstractControl, FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms'
+import {AbstractControl, FormBuilder, FormGroup, FormGroupDirective} from '@angular/forms'
+import {UserValidationService} from 'src/app/shared/services/validation/user-validation.service'
 
 /**
  * 登入頁元件
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.form = this.fb.group({
       //email
       email: this.fb.control('', {
-        validators: [Validators.required, Validators.email],
+        validators: [UserValidationService.emailValidator],
         updateOn: 'submit',
       }),
       password: this.fb.control('', {}),
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit {
    */
   login(): void {
     console.log(this.form.value)
+    this.form.markAllAsTouched()
     if (this.form.invalid) return
   }
 
