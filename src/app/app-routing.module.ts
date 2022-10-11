@@ -12,7 +12,9 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
+      // 首頁 index
       {path: 'index', component: IndexComponent},
+      // 表格頁 tables
       {path: 'tables', component: TablesComponent},
     ],
   },

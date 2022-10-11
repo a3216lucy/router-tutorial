@@ -1,5 +1,6 @@
 import {Component} from '@angular/core'
-import {Data} from './tables.interface'
+import {ProjectData} from 'src/app/model/projectData.interface'
+import {Data} from '../../model/data.interface'
 
 /** 物件資料 */
 export interface Obj {
@@ -8,6 +9,7 @@ export interface Obj {
   pet?: Pet[]
 }
 
+/** 寵物明細 */
 export interface Pet {
   category: string
   color: string
@@ -23,6 +25,7 @@ export class TablesComponent {
   /** JavaScript */
   Object = Object
 
+  /** 寵物資料 */
   obj: Obj[] = [
     {
       id: '01',
@@ -62,12 +65,58 @@ export class TablesComponent {
     },
   ]
 
+  /** 專案資料 */
+  projectData: Array<ProjectData> = [
+    {
+      project: 'Spotify',
+      projectUrl: '../assets/img/small-logos/logo-spotify.svg',
+      budget: 2500,
+      status: 'working',
+      completion: 60,
+    },
+    {
+      project: 'Invision',
+      projectUrl: '../assets/img/small-logos/logo-invision.svg',
+      budget: 5000,
+      status: 'done',
+      completion: 100,
+    },
+    {
+      project: 'Jira',
+      projectUrl: '../assets/img/small-logos/logo-jira.svg',
+      budget: 3400,
+      status: 'canceled',
+      completion: 30,
+    },
+    {
+      project: 'Slack',
+      projectUrl: '../assets/img/small-logos/logo-slack.svg',
+      budget: 1000,
+      status: 'canceled',
+      completion: 0,
+    },
+    {
+      project: 'Webdev',
+      projectUrl: '../assets/img/small-logos/logo-webdev.svg',
+      budget: 14000,
+      status: 'working',
+      completion: 80,
+    },
+    {
+      project: 'Adobe XD',
+      projectUrl: '../assets/img/small-logos/logo-xd.svg',
+      budget: 2300,
+      status: 'done',
+      completion: 100,
+    },
+  ]
+
   /**
    * 印出迴圈的資料
    * @param data - API 資料
    * @returns 無回傳值
    */
-  printConsole(data: Data): void {
+  printConsole(data: Data | ProjectData): void {
     console.log(data)
   }
 }
