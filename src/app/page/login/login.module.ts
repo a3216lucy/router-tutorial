@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common'
 import {NgModule} from '@angular/core'
-import {ReactiveFormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {MatIconModule} from '@angular/material/icon'
 import {MatInputModule} from '@angular/material/input'
 import {ControlMessageModule} from 'src/app/shared/components/control-messages/control-message.module'
@@ -12,6 +12,14 @@ import {LoginComponent} from './login.component'
  */
 @NgModule({
   declarations: [LoginComponent],
-  imports: [CommonModule, LoginRoutingModule, MatInputModule, MatIconModule, ReactiveFormsModule, ControlMessageModule],
+  imports: [
+    CommonModule,
+    LoginRoutingModule,
+    MatInputModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    ControlMessageModule,
+    FormsModule,
+  ],
 })
 export class LoginModule {}

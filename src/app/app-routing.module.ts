@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core'
 import {RouterModule, Routes} from '@angular/router'
 import {LayoutComponent} from './layout/layout.component'
 import {IndexComponent} from './page/index/index.component'
+import {TablesComponent} from './page/tables/tables.component'
 
 /** 根路由設定 */
 const routes: Routes = [
@@ -10,7 +11,10 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    children: [{path: 'index', component: IndexComponent}],
+    children: [
+      {path: 'index', component: IndexComponent},
+      {path: 'tables', component: TablesComponent},
+    ],
   },
   // 註冊頁 sign up
   {
