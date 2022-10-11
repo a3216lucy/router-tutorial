@@ -1,6 +1,18 @@
 import {Component} from '@angular/core'
 import {Data} from './tables.interface'
 
+/** 物件資料 */
+export interface Obj {
+  id: string
+  account: string
+  pet?: Pet[]
+}
+
+export interface Pet {
+  category: string
+  color: string
+}
+
 /** 表格頁面 */
 @Component({
   selector: 'app-tables',
@@ -8,6 +20,21 @@ import {Data} from './tables.interface'
   styleUrls: ['./tables.component.scss'],
 })
 export class TablesComponent {
+  /** JavaScript */
+  Object = Object
+
+  obj: Obj[] = [
+    {
+      id: '01',
+      account: '',
+      pet: [{category: 'cat', color: 'white'}],
+    },
+    {
+      id: '02',
+      account: '',
+    },
+  ]
+
   /** 表格資料 */
   data: Array<Data> = [
     {

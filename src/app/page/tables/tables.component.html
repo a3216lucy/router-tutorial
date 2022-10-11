@@ -7,6 +7,48 @@
         </div>
         <div class="card-body px-0 pt-0 pb-2">
           <div class="table-responsive p-0">
+            <table class="table align-items-center mb-0" *ngIf="obj.length">
+              <thead>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Pet</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let objItem of obj">
+                  <td>
+                    <div class="d-flex px-2 py-1">
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">{{ objItem.account }}</h6>
+                        <p class="text-xs text-secondary mb-0">{{ objItem.id }}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <ng-container *ngIf="Object.prototype.hasOwnProperty.call(objItem, 'pet')">
+                      <p *ngFor="let petItem of objItem.pet">
+                        <span>寵物: {{ petItem.category }}</span>
+                        <span>顏色: {{ petItem.color }}</span>
+                      </p>
+                    </ng-container>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-header pb-0">
+          <h6>Authors table</h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+          <div class="table-responsive p-0">
             <table class="table align-items-center mb-0" *ngIf="data.length; else noData">
               <thead>
                 <tr>
