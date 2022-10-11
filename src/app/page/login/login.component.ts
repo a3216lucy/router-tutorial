@@ -18,11 +18,16 @@ export class LoginComponent implements OnInit {
   title = 'Argon Dashboard'
   /**首頁連結*/
   dashBoardUrl = '../pages/dashboard.html'
-  content = ''
-  a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   /**登入頁 - 建構子 */
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    /** fb:表單服務 */
+    private fb: FormBuilder,
+    /** router: 內部調用 Angular 內部 API 路由與導航 */
+    private router: Router,
+    /** route: 內部調用 Angular 內部 API ActivatedRoute 允許訪問與某出口中載入的元件關聯路由資訊 */
+    private route: ActivatedRoute,
+  ) {}
 
   /**
    * Angular 生命週期
@@ -54,6 +59,7 @@ export class LoginComponent implements OnInit {
     return control.invalid && (control.touched || formRef.submitted)
   }
 
+  /** 路由轉向 */
   changeTarget(event: MouseEvent): void {
     console.log(event)
     this.router.navigate(['/index'])

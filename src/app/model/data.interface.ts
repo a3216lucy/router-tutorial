@@ -16,8 +16,8 @@ export interface Data {
 
 /** 功能 */
 export interface Function {
-  /**角色 */
+  /** 角色 */
   role: string
-  /**組織 */
+  /** 組織 */
   place: string
 }

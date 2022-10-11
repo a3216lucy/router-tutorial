@@ -26,25 +26,25 @@
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center me-2 active" aria-current="page" routerLink="/index">
-                  <i class="fa fa-chart-pie opacity-6 text-dark me-1"></i>
+                  <em class="fa fa-chart-pie opacity-6 text-dark me-1"></em>
                   Dashboard
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link me-2" href="../pages/profile.html">
-                  <i class="fa fa-user opacity-6 text-dark me-1"></i>
+                  <em class="fa fa-user opacity-6 text-dark me-1"></em>
                   Profile
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link me-2" href="../pages/sign-up.html">
-                  <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
+                  <em class="fas fa-user-circle opacity-6 text-dark me-1"></em>
                   Sign Up
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link me-2" href="../pages/sign-in.html">
-                  <i class="fas fa-key opacity-6 text-dark me-1"></i>
+                  <em class="fas fa-key opacity-6 text-dark me-1"></em>
                   Sign In
                 </a>
               </li>
@@ -75,10 +75,6 @@
                 <p class="mb-0">Enter your email and password to sign in</p>
               </div>
               <div class="card-body">
-                <input type="text" [(ngModel)]="content" />
-                <p>{{ content }}</p>
-
-                <div *ngFor="let item of a; let i = index">資料：{{ item }}<br />index：{{ i }}</div>
                 <form role="form" #formRef="ngForm" [formGroup]="form" (ngSubmit)="login()">
                   <div class="mb-3">
                     <input
