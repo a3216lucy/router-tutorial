@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core'
 import {AbstractControl, FormBuilder, FormGroup, FormGroupDirective} from '@angular/forms'
+import {ActivatedRoute, Router} from '@angular/router'
 import {UserValidationService} from 'src/app/shared/services/validation/user-validation.service'
 
 /**
@@ -13,9 +14,15 @@ import {UserValidationService} from 'src/app/shared/services/validation/user-val
 export class LoginComponent implements OnInit {
   /**表單*/
   form!: FormGroup
+  /**標題 */
+  title = 'Argon Dashboard'
+  /**首頁連結*/
+  dashBoardUrl = '../pages/dashboard.html'
+  content = ''
+  a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   /**登入頁 - 建構子 */
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {}
 
   /**
    * Angular 生命週期
@@ -45,5 +52,10 @@ export class LoginComponent implements OnInit {
   /** 驗證失敗 */
   isInvalid(control: AbstractControl, formRef: FormGroupDirective): boolean {
     return control.invalid && (control.touched || formRef.submitted)
+  }
+
+  changeTarget(event: MouseEvent): void {
+    console.log(event)
+    this.router.navigate(['/index'])
   }
 }

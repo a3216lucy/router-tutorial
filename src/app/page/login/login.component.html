@@ -6,7 +6,7 @@
         class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-4 py-2 start-0 end-0 mx-4"
       >
         <div class="container-fluid">
-          <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3" href="../pages/dashboard.html"> Argon Dashboard 2 </a>
+          <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3" routerLink="/index"> {{ title }} </a>
           <button
             class="navbar-toggler shadow-none ms-2"
             type="button"
@@ -51,9 +51,9 @@
             </ul>
             <ul class="navbar-nav d-lg-block d-none">
               <li class="nav-item">
-                <a href="https://www.creative-tim.com/product/argon-dashboard" class="btn btn-sm mb-0 me-1 btn-primary"
-                  >Free Download</a
-                >
+                <button type="button" (click)="changeTarget($event)" class="btn btn-sm mb-0 me-1 btn-primary">
+                  Free Download
+                </button>
               </li>
             </ul>
           </div>
@@ -75,6 +75,10 @@
                 <p class="mb-0">Enter your email and password to sign in</p>
               </div>
               <div class="card-body">
+                <input type="text" [(ngModel)]="content" />
+                <p>{{ content }}</p>
+
+                <div *ngFor="let item of a; let i = index">資料：{{ item }}<br />index：{{ i }}</div>
                 <form role="form" #formRef="ngForm" [formGroup]="form" (ngSubmit)="login()">
                   <div class="mb-3">
                     <input
@@ -97,6 +101,7 @@
                       formControlName="password"
                     />
                   </div>
+
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="rememberMe" formControlName="isRemember" />
                     <label class="form-check-label" for="rememberMe">Remember me</label>

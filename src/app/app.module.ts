@@ -5,12 +5,13 @@ import {AppRoutingModule} from './app-routing.module'
 import {AppComponent} from './app.component'
 import {LayoutComponent} from './layout/layout.component'
 import {IndexComponent} from './page/index/index.component'
+import {TablesComponent} from './page/tables/tables.component'
 
 /**
  * 根模組
  */
 @NgModule({
-  declarations: [AppComponent, LayoutComponent, IndexComponent],
+  declarations: [AppComponent, LayoutComponent, IndexComponent, TablesComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
