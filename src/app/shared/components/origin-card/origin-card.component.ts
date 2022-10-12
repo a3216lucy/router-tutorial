@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core'
+import {Component, EventEmitter, Input, Output} from '@angular/core'
 
 interface OriginCardData {
   title: string
@@ -22,6 +22,9 @@ export class OriginCardComponent {
     content: '',
     status: 'Offline',
   }
+
+  //事件資料傳遞
+  @Output() showMessage = new EventEmitter()
 
   // class
   dynamicClass(status: string) {
@@ -50,5 +53,9 @@ export class OriginCardComponent {
       'shadow-danger': status === 'Offline',
       'shadow-primary': status === 'Online',
     }
+  }
+
+  show() {
+    this.showMessage.emit(this.originCardData)
   }
 }
