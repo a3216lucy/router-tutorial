@@ -29,13 +29,21 @@ export class OriginCardComponent {
   // class
   dynamicClass(status: string) {
     const obj: any = {
-      Online: {
+      money: {
         color: 'primary',
-        text: 'Online',
+        text: 'money',
       },
-      Offline: {
+      users: {
         color: 'danger',
-        text: 'Offline',
+        text: 'users',
+      },
+      client: {
+        color: 'success',
+        text: 'client',
+      },
+      sales: {
+        color: 'warning',
+        text: 'sales',
       },
     }
     if (obj[status].text === status) {

@@ -1,47 +1,47 @@
-import {Component, OnDestroy, OnInit} from '@angular/core'
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core'
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss'],
 })
-export class IndexComponent implements OnInit, OnDestroy {
+export class IndexComponent implements OnInit, OnDestroy, AfterViewInit {
   books = [
     {
-      title: '標題一',
-      price: 111,
-      growth: '1%',
-      content: 'aaa',
-      status: 'Online',
+      title: "TODAY'S MONEY",
+      price: 53000,
+      growth: '+55%',
+      content: 'since yesterday',
+      status: 'money',
       describe:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis id quisquam perferendis enim odit saepe, corrupti repellat voluptates fugiat sapiente sequi sunt nihil iure molestias reiciendis soluta dolore similique voluptatum totam iste fuga doloribus! Cumque tempora, quas id repellendus aut atque vel quod eligendi exercitationem voluptates nesciunt qui iste minus praesentium recusandae ipsam odit soluta expedita, magni, aliquam et veniam?',
+        'since yesterday Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis id quisquam perferendis enim odit saepe, corrupti repellat voluptates fugiat sapiente sequi sunt nihil iure molestias reiciendis soluta dolore similique voluptatum totam iste fuga doloribus! Cumque tempora, quas id repellendus aut atque vel quod eligendi exercitationem voluptates nesciunt qui iste minus praesentium recusandae ipsam odit soluta expedita, magni, aliquam et veniam?',
     },
     {
-      title: '標題二',
-      price: 111,
-      growth: '2%',
-      content: 'bbb',
-      status: 'Offline',
-      describe:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis id quisquam perferendis enim odit saepe, corrupti repellat voluptates fugiat sapiente sequi sunt nihil iure molestias reiciendis soluta dolore similique voluptatum totam iste fuga doloribus! Cumque tempora, quas id repellendus aut atque vel quod eligendi exercitationem voluptates nesciunt qui iste minus praesentium recusandae ipsam odit soluta expedita, magni, aliquam et veniam?',
-    },
-    {
-      title: '標題三',
-      price: 111,
+      title: "TODAY'S USERS",
+      price: 2300,
       growth: '3%',
-      content: 'ccc',
-      status: 'Offline',
+      content: 'since last week',
+      status: 'users',
       describe:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis id quisquam perferendis enim odit saepe, corrupti repellat voluptates fugiat sapiente sequi sunt nihil iure molestias reiciendis soluta dolore similique voluptatum totam iste fuga doloribus! Cumque tempora, quas id repellendus aut atque vel quod eligendi exercitationem voluptates nesciunt qui iste minus praesentium recusandae ipsam odit soluta expedita, magni, aliquam et veniam?',
+        'since last week Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis id quisquam perferendis enim odit saepe, corrupti repellat voluptates fugiat sapiente sequi sunt nihil iure molestias reiciendis soluta dolore similique voluptatum totam iste fuga doloribus! Cumque tempora, quas id repellendus aut atque vel quod eligendi exercitationem voluptates nesciunt qui iste minus praesentium recusandae ipsam odit soluta expedita, magni, aliquam et veniam?',
     },
     {
-      title: '標題四',
-      price: 111,
-      growth: '4%',
-      content: 'ddd',
-      status: 'Offline',
+      title: 'NEW CLIENTS',
+      price: 3462,
+      growth: '-2%',
+      content: 'since last quarter',
+      status: 'client',
       describe:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis id quisquam perferendis enim odit saepe, corrupti repellat voluptates fugiat sapiente sequi sunt nihil iure molestias reiciendis soluta dolore similique voluptatum totam iste fuga doloribus! Cumque tempora, quas id repellendus aut atque vel quod eligendi exercitationem voluptates nesciunt qui iste minus praesentium recusandae ipsam odit soluta expedita, magni, aliquam et veniam?',
+        'since last quarter Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis id quisquam perferendis enim odit saepe, corrupti repellat voluptates fugiat sapiente sequi sunt nihil iure molestias reiciendis soluta dolore similique voluptatum totam iste fuga doloribus! Cumque tempora, quas id repellendus aut atque vel quod eligendi exercitationem voluptates nesciunt qui iste minus praesentium recusandae ipsam odit soluta expedita, magni, aliquam et veniam?',
+    },
+    {
+      title: 'SALES',
+      price: 103430,
+      growth: '5%',
+      content: 'than last month',
+      status: 'sales',
+      describe:
+        'than last month Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis id quisquam perferendis enim odit saepe, corrupti repellat voluptates fugiat sapiente sequi sunt nihil iure molestias reiciendis soluta dolore similique voluptatum totam iste fuga doloribus! Cumque tempora, quas id repellendus aut atque vel quod eligendi exercitationem voluptates nesciunt qui iste minus praesentium recusandae ipsam odit soluta expedita, magni, aliquam et veniam?',
     },
   ]
 
@@ -54,13 +54,21 @@ export class IndexComponent implements OnInit, OnDestroy {
     describe: '',
   }
 
+  constructor() {
+    console.warn('constructor: DOM 尚未載入')
+  }
+
   ngOnInit() {
-    console.log('進入網頁時觸發')
+    console.warn('ngOnInit: 進入網頁時觸發，DOM 尚未載入')
     this.cardDetail = this.books[0]
   }
 
+  ngAfterViewInit(): void {
+    console.warn('ngAfterViewInit: 取得 DOM 之後執行')
+  }
+
   ngOnDestroy() {
-    console.log('離開首頁時觸發')
+    console.warn('ngOnDestroy: 離開首頁時觸發')
   }
 
   showMessage($event: any) {
