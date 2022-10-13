@@ -1,5 +1,5 @@
-import {HttpClient} from '@angular/common/http'
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core'
+import {GetPopulationService} from 'src/app/shared/services/api/get-population.service'
 
 @Component({
   selector: 'app-index',
@@ -58,20 +58,18 @@ export class IndexComponent implements OnInit, OnDestroy, AfterViewInit {
   /** 人口資料 */
   peopleData: any = []
 
-  constructor(private http: HttpClient) {
+  /** 建構子 */
+  constructor(
+    // DI 注入服務
+    private getPopulationService: GetPopulationService,
+  ) {
     console.warn('constructor: DOM 尚未載入')
 
-    this.http
-      .get('/api/v1/rest/datastore/301000000A-000605-067', {
-        headers: {
-          authorization: 'Bearer xxx',
-        },
-      })
-      .subscribe({
-        next: (res: any) => {
-          this.peopleData = res.result.records
-        },
-      })
+    this.getPopulationService.getPopulation().subscribe({
+      next: (res: any) => {
+        this.peopleData = res.result.records
+      },
+    })
   }
 
   ngOnInit() {
