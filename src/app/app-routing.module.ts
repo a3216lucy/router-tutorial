@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core'
 import {RouterModule, Routes} from '@angular/router'
+import {AuthGuard} from './core/guards/auth.guard'
 import {LayoutComponent} from './layout/layout.component'
 import {TablesComponent} from './page/tables/tables.component'
 
@@ -19,6 +20,7 @@ const routes: Routes = [
       // 表格頁 tables
       {path: 'tables', component: TablesComponent},
     ],
+    canActivate: [AuthGuard],
   },
   // 註冊頁 sign up
   {
