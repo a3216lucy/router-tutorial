@@ -1,5 +1,6 @@
 import {HttpClient} from '@angular/common/http'
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core'
+import {NavbarService} from '@my-app/core/services/navbar.service'
 import {GetPopulationService} from 'src/app/core/services/api/get-population.service'
 
 @Component({
@@ -27,14 +28,11 @@ export class IndexComponent implements OnInit, OnDestroy, AfterViewInit {
     // DI 注入服務
     private getPopulationService: GetPopulationService,
     private http: HttpClient,
+    private navbarService: NavbarService,
   ) {
     console.warn('constructor: DOM 尚未載入')
 
-    this.getPopulationService.getPopulation().subscribe({
-      next: (res: any) => {
-        this.peopleData = res.result.records
-      },
-    })
+    this.navbarService.searchData$.subscribe(console.log)
 
     const requestBody = {status: 'user'}
     this.http.post('http://localhost:3000/api/books', requestBody).subscribe({
