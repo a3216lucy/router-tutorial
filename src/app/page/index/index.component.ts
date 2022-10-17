@@ -1,7 +1,6 @@
 import {HttpClient} from '@angular/common/http'
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core'
 import {NavbarService} from '@my-app/core/services/navbar.service'
-import {GetPopulationService} from 'src/app/core/services/api/get-population.service'
 
 @Component({
   selector: 'app-index',
@@ -20,19 +19,9 @@ export class IndexComponent implements OnInit, OnDestroy, AfterViewInit {
     describe: '',
   }
 
-  /** 人口資料 */
-  peopleData: any = []
-
   /** 建構子 */
-  constructor(
-    // DI 注入服務
-    private getPopulationService: GetPopulationService,
-    private http: HttpClient,
-    private navbarService: NavbarService,
-  ) {
+  constructor(private http: HttpClient, public navbarService: NavbarService) {
     console.warn('constructor: DOM 尚未載入')
-
-    this.navbarService.searchData$.subscribe(console.log)
 
     const requestBody = {status: 'user'}
     this.http.post('http://localhost:3000/api/books', requestBody).subscribe({
