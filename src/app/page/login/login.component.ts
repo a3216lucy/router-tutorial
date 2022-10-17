@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core'
 import {AbstractControl, FormBuilder, FormGroup, FormGroupDirective} from '@angular/forms'
 import {ActivatedRoute, Router} from '@angular/router'
-import {UserValidationService} from 'src/app/shared/services/validation/user-validation.service'
+import {AuthService} from 'src/app/core/services/api/kkbox/auth.service'
+import {UserValidationService} from 'src/app/core/services/validation/user-validation.service'
+import {SearchService} from './../../core/services/api/kkbox/search.service'
 
 /**
  * 登入頁元件
@@ -27,6 +29,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     /** route: 內部調用 Angular 內部 API ActivatedRoute 允許訪問與某出口中載入的元件關聯路由資訊 */
     private route: ActivatedRoute,
+    private authService: AuthService,
+    private searchService: SearchService,
   ) {}
 
   /**
@@ -49,9 +53,17 @@ export class LoginComponent implements OnInit {
    * 登入
    */
   login(): void {
-    console.log(this.form.value)
     this.form.markAllAsTouched()
     if (this.form.invalid) return
+
+    this.authService.login().subscribe({
+      next: (res) => {
+        if (!res) return
+
+        window.localStorage.setItem('userToken', res.access_token)
+        this.router.navigate(['/index'])
+      },
+    })
   }
 
   /** 驗證失敗 */

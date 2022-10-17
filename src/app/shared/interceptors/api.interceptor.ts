@@ -6,7 +6,8 @@ import {Observable} from 'rxjs'
 export class ApiInterceptor implements HttpInterceptor {
   constructor() {}
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const newRequest = req.clone({setHeaders: {Authorization: 'Bearer 123456'}})
+    const newHeader = {setHeaders: {Authorization: `Bearer ${localStorage.getItem('userToken')}`}}
+    const newRequest = req.clone(newHeader)
     return next.handle(newRequest)
   }
 }

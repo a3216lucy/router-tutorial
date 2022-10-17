@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core'
 import {AbstractControl} from '@angular/forms'
-import {CommonValidationService} from '../../services/validation/common-validation.service'
+import {CommonValidationService} from '../../../core/services/validation/common-validation.service'
 
 /** Reactive Forms 表單錯誤訊息元件 */
 @Component({

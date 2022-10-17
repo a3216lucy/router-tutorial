@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http'
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core'
-import {GetPopulationService} from 'src/app/shared/services/api/get-population.service'
+import {GetPopulationService} from 'src/app/core/services/api/get-population.service'
 
 @Component({
   selector: 'app-index',
