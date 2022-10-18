@@ -1,8 +1,8 @@
-import {EmptyDataPipe} from './../../shared/pipes/empty-data.pipe'
-import {OrderByPipe} from './../../shared/pipes/order-by.pipe'
 import {HttpClient} from '@angular/common/http'
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core'
 import {NavbarService} from '@my-app/core/services/navbar.service'
+import {EmptyDataPipe} from './../../shared/pipes/empty-data.pipe'
+import {OrderByPipe} from './../../shared/pipes/order-by.pipe'
 
 @Component({
   selector: 'app-index',

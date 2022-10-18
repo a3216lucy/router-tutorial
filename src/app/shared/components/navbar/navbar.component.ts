@@ -1,6 +1,7 @@
 import {Component} from '@angular/core'
 import {SearchService} from '@my-app/core/services/api/kkbox'
 import {NavbarService} from '@my-app/core/services/navbar.service'
+import {map, shareReplay} from 'rxjs/operators'
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +9,15 @@ import {NavbarService} from '@my-app/core/services/navbar.service'
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
+  // search 共用公式 Observable
+  search$ = (request: any) =>
+    this.searchService.search(request).pipe(
+      map((res) => res.tracks.data),
+      // cache api
+      shareReplay(1),
+    )
+
+  /** 建構子 */
   constructor(private searchService: SearchService, private navbarService: NavbarService) {}
 
   ngOnInit() {
@@ -16,11 +26,15 @@ export class NavbarComponent {
       type: 'track',
       territory: 'TW',
     }
-    this.searchService.search(request).subscribe({
-      next: (res) => {
-        this.navbarService.searchData$.next(res.tracks.data)
-      },
-    })
+    //Observable
+    this.navbarService.searchData2$ = this.search$(request)
+
+    //BehaviorSubject
+    // this.searchService.search(request).subscribe({
+    //   next: (res) => {
+    //     this.navbarService.searchData$.next(res.tracks.data)
+    //   },
+    // })
   }
 
   changeInput($event: Event) {
@@ -30,10 +44,14 @@ export class NavbarComponent {
       type: 'track',
       territory: 'TW',
     }
-    this.searchService.search(request).subscribe({
-      next: (res) => {
-        this.navbarService.searchData$.next(res.tracks.data)
-      },
-    })
+    //Observable
+    this.navbarService.searchData2$ = this.search$(request)
+
+    //BehaviorSubject
+    // this.searchService.search(request).subscribe({
+    //   next: (res) => {
+    //     this.navbarService.searchData$.next(res.tracks.data)
+    //   },
+    // })
   }
 }
