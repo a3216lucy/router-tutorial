@@ -8,6 +8,7 @@ import {BehaviorSubject, Observable} from 'rxjs'
 export class NavbarService {
   searchData$ = new BehaviorSubject<Datum[]>([])
   searchData2$: Observable<any> = new Observable()
+  searchData3$: Observable<any> = new Observable()
 
   //Observable 更新
   // this.searchData2$ = Observable
