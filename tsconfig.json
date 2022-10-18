@@ -5,7 +5,7 @@
     "baseUrl": "./",
     "paths": {
       "@my-app/core/*": ["./src/app/core/*"],
-      "@my-app/model/*": ["./src/app/model/*"]
+      "@my-app/model/*": ["src/app/core/model/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

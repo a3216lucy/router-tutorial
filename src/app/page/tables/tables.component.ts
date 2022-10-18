@@ -1,6 +1,8 @@
 import {Component} from '@angular/core'
-import {ProjectData} from 'src/app/model/projectData.interface'
-import {Data} from '../../model/data.interface'
+import {Data} from '@my-app/core/model/data.interface'
+import {ProjectData} from '@my-app/core/model/projectData.interface'
+import {EmptyDataPipe} from 'src/app/shared/pipes/empty-data.pipe'
+import {PricePipe} from 'src/app/shared/pipes/price.pipe'
 
 /** 物件資料 */
 export interface Obj {
@@ -20,6 +22,7 @@ export interface Pet {
   selector: 'app-tables',
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.scss'],
+  providers: [PricePipe, EmptyDataPipe],
 })
 export class TablesComponent {
   /** JavaScript */
@@ -85,14 +88,14 @@ export class TablesComponent {
       project: 'Jira',
       projectUrl: '../assets/img/small-logos/logo-jira.svg',
       budget: 3400,
-      status: 'canceled',
+      status: '',
       completion: 30,
     },
     {
       project: 'Slack',
       projectUrl: '../assets/img/small-logos/logo-slack.svg',
       budget: 1000,
-      status: 'canceled',
+      status: '',
       completion: 0,
     },
     {

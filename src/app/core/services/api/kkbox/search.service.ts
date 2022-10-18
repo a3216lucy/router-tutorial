@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http'
 import {Injectable} from '@angular/core'
-import {SearchResponse} from '@my-app/model/kkbox/search'
+import {SearchResponse} from '@my-app/core/model/kkbox/search'
 import {Observable} from 'rxjs'
 
 @Injectable({
