@@ -7,13 +7,14 @@ import {AppComponent} from './app.component'
 import {LayoutModule} from './layout/layout.module'
 import {TablesComponent} from './page/tables/tables.component'
 import {ApiInterceptor} from './shared/interceptors/api.interceptor'
+import {PipesModule} from './shared/pipes/pipes.module'
 
 /**
  * 根模組
  */
 @NgModule({
   declarations: [AppComponent, TablesComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, LayoutModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, LayoutModule, PipesModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

@@ -1,3 +1,4 @@
+import {PipesModule} from './../../shared/pipes/pipes.module'
 import {CommonModule} from '@angular/common'
 import {HttpClientModule} from '@angular/common/http'
 import {NgModule} from '@angular/core'
@@ -7,6 +8,6 @@ import {IndexComponent} from './index.component'
 
 @NgModule({
   declarations: [IndexComponent],
-  imports: [CommonModule, IndexRoutingModule, OriginCardModule, HttpClientModule],
+  imports: [CommonModule, IndexRoutingModule, OriginCardModule, HttpClientModule, PipesModule],
 })
 export class IndexModule {}

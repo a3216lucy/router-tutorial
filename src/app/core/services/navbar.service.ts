@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core'
-import {Datum} from '@my-app/model/kkbox/search'
+import {Datum} from '@my-app/core/model/kkbox/search'
 import {BehaviorSubject} from 'rxjs'
 
 @Injectable({

@@ -177,16 +177,11 @@
                     </div>
                   </td>
                   <td>
-                    <p class="text-sm font-weight-bold mb-0">${{ item.budget }}</p>
+                    <p class="text-sm font-weight-bold mb-0">${{ item.budget | price }}</p>
                   </td>
                   <!-- 第一種寫法 -->
                   <td>
-                    <span *ngIf="item.status !== 'canceled'; else columnNoData" class="text-xs font-weight-bold">{{
-                      item.status
-                    }}</span>
-                    <ng-template #columnNoData>
-                      <p>-</p>
-                    </ng-template>
+                    <span class="text-xs font-weight-bold">{{ item.status | emptyData }}</span>
                   </td>
                   <!-- 第二種寫法 -->
                   <!-- <td>
