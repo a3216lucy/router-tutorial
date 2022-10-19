@@ -1,5 +1,8 @@
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import {NgModule} from '@angular/core'
+import {FormsModule} from '@angular/forms'
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatSelectModule} from '@angular/material/select'
 import {BrowserModule} from '@angular/platform-browser'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {AppRoutingModule} from './app-routing.module'
@@ -14,7 +17,17 @@ import {PipesModule} from './shared/pipes/pipes.module'
  */
 @NgModule({
   declarations: [AppComponent, TablesComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, LayoutModule, PipesModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    LayoutModule,
+    PipesModule,
+    MatFormFieldModule,
+    MatSelectModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

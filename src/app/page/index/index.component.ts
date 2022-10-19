@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http'
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core'
 import {NavbarService} from '@my-app/core/services/navbar.service'
+import {BehaviorSubject, combineLatest, of} from 'rxjs'
 import {EmptyDataPipe} from './../../shared/pipes/empty-data.pipe'
 import {OrderByPipe} from './../../shared/pipes/order-by.pipe'
 
@@ -11,6 +12,9 @@ import {OrderByPipe} from './../../shared/pipes/order-by.pipe'
   providers: [OrderByPipe, EmptyDataPipe],
 })
 export class IndexComponent implements OnInit, OnDestroy, AfterViewInit {
+  selectYear$ = new BehaviorSubject<number>(2022)
+  selectYearList: number[] = []
+
   books = []
   /** 儲存排序後的資料 */
   newArray: any = []
@@ -54,9 +58,28 @@ export class IndexComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit() {
+    combineLatest([this.selectYear$, this.navbarService.searchData2$]).subscribe((data) => {
+      const [year, searchData2Res] = data
+
+      //ES6 物件可讓你儲存任何類型的唯一值（unique)
+      const mySet = new Set()
+      const years = searchData2Res.map((d: any) => new Date(d.album.release_date).getFullYear())
+      years.forEach((y: string) => {
+        mySet.add(y)
+      })
+      /**取得唯一年份 */
+      // sort, orderBy
+      const uniqueYear = [...mySet].map((d) => ({year: d}))
+      const sortedYear = this.orderByPipe.transform(uniqueYear, 'year', 'desc')
+      this.selectYearList = sortedYear.map((d) => d.year)
+
+      const filterData = searchData2Res.filter((d: any) => new Date(d.album.release_date).getFullYear() === year)
+      this.navbarService.searchData2$ = of(filterData)
+    })
+
     console.warn('ngOnInit: 進入網頁時觸發，DOM 尚未載入')
     // 資料排序處理
-    // this.newArray = this.orderByPipe.transform(this.array,'time','asc')
+    // this.newArray = this.orderByPipe.transform(this.array,'time','asc'
   }
 
   ngAfterViewInit(): void {
@@ -65,6 +88,10 @@ export class IndexComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy() {
     console.warn('ngOnDestroy: 離開首頁時觸發')
+  }
+
+  changeSelect($event: any) {
+    this.selectYear$.next($event.value)
   }
 
   showMessage($event: any) {
