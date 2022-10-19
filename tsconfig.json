@@ -5,7 +5,9 @@
     "baseUrl": "./",
     "paths": {
       "@my-app/core/*": ["./src/app/core/*"],
-      "@my-app/model/*": ["src/app/core/model/*"]
+      "@my-app/model/*": ["src/app/core/model/*"],
+      "@my-app/pipes/*": ["src/app/shared/pipes/*"],
+      "@my-app/components/*": ["src/app/shared/components/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

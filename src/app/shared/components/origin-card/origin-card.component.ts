@@ -1,12 +1,13 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core'
 
-interface OriginCardData {
+export interface OriginCardData {
   title: string
   price: number
   growth: string
   content: string
-  // Offline, Online
   status: string
+  describe?: string
+  imageUrl?: string
 }
 
 @Component({
@@ -46,7 +47,7 @@ export class OriginCardComponent {
         text: 'sales',
       },
     }
-    if (obj[status].text === status) {
+    if (status && obj[status].text === status) {
       return `bg-gradient-${obj[status].color} shadow-${obj[status].color}`
     }
     return ''
