@@ -3,7 +3,9 @@
     <div class="row">
       <div class="col-8">
         <div class="numbers">
-          <p class="text-sm mb-0 text-uppercase font-weight-bold">{{ originCardData.title }}</p>
+          <p class="text-sm mb-0 text-uppercase font-weight-bold text-truncate" style="max-width: 150px">
+            {{ originCardData.title }}
+          </p>
           <h5 class="font-weight-bolder">{{ originCardData.price }}</h5>
           <p class="mb-0">
             <span class="text-success text-sm font-weight-bolder">{{ originCardData.growth }}</span>
@@ -12,6 +14,9 @@
         </div>
       </div>
       <div class="col-4 text-end">
+        <div style="width: 48px; height: 48px; overflow: hidden; margin-left: auto">
+          <img [src]="originCardData.imageUrl" style="object-fit: cover" class="w-100" />
+        </div>
         <div class="icon icon-shape text-center rounded-circle" [class]="dynamicClass(originCardData.status)">
           <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
         </div>
