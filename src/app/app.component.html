@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
+
+{{ title }}
+
+<ng-container *ngFor="let num of arrayA$ | async">
+  <div>{{ num }}</div>
+</ng-container>
