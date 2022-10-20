@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core'
+import {Router} from '@angular/router'
 import {OriginCardData} from '@my-app/components/origin-card'
 import {Datum} from '@my-app/core/model/kkbox/get-a-new-hits-playlist'
 import {GetANewHitsPlaylistService, GetChartPlaylistsService} from '@my-app/core/services/api/kkbox'
@@ -40,6 +41,7 @@ export class IndexComponent implements OnInit {
 
   /** 建構子 */
   constructor(
+    private router: Router,
     public navbarService: NavbarService,
     /**  orderByPipe：資料排序處理 */
     private orderByPipe: OrderByPipe,
@@ -139,5 +141,10 @@ export class IndexComponent implements OnInit {
     this.cardDetail = $event
   }
 
-  gotoDetail($event: Event, url: string) {}
+  gotoDetail($event: Event, id: string) {
+    // 必要參數-傳資料
+    // this.router.navigate([`/index/${id}`])
+    // 非必要參數-傳資料
+    this.router.navigate(['/index/detail'], {queryParams: {playlistId: 'popular'}})
+  }
 }
