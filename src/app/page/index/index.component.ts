@@ -6,6 +6,7 @@ import {NavbarService} from '@my-app/core/services/navbar.service'
 import {EmptyDataPipe, OrderByPipe} from '@my-app/pipes/index'
 import {BehaviorSubject} from 'rxjs'
 import {map, switchMap, tap} from 'rxjs/operators'
+import {createCharts} from './chart'
 
 @Component({
   selector: 'app-index',
@@ -114,6 +115,11 @@ export class IndexComponent implements OnInit {
         }),
       )
       .subscribe()
+  }
+
+  ngAfterViewInit() {
+    var ctx1 = (document.getElementById('chart-line') as any).getContext('2d')
+    createCharts(ctx1)
   }
 
   changeSelect($event: any) {
