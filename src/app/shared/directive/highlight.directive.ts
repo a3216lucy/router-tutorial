@@ -8,7 +8,7 @@ export class HighLightDirective {
 
   /** 監聽滑鼠移進去，新增文字黃色底色 */
   @HostListener('mouseenter') onMouseEnter() {
-    this.highlight('yellow')
+    this.highlight('#d3d3d3')
   }
 
   @HostListener('mouseleave') onMouseLeave() {
