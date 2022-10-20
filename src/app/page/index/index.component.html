@@ -134,18 +134,26 @@
     <div class="col-lg-5">
       <div class="card">
         <div class="card-header pb-0 p-3">
-          <h6 class="mb-0">Categories</h6>
+          <h6 class="mb-0">{{ hitsTitle }}</h6>
         </div>
         <div class="card-body p-3">
           <ul class="list-group">
-            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+            <li
+              class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg"
+              *ngFor="let hits of hitPlaylist$ | async; let hitsIndex = index"
+            >
               <div class="d-flex align-items-center">
-                <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                  <i class="ni ni-mobile-button text-white opacity-10"></i>
+                <div class="icon icon-shape icon-sm me-3 bg-gradient-primary shadow text-center">
+                  {{ hitsIndex + 1 }}
                 </div>
                 <div class="d-flex flex-column">
-                  <h6 class="mb-1 text-dark text-sm">Devices</h6>
-                  <span class="text-xs">250 in stock, <span class="font-weight-bold">346+ sold</span></span>
+                  <h6 class="mb-1 text-dark text-sm">{{ hits.name }} {{ hits.album.artist.name }}</h6>
+                  <span class="text-xs"
+                    >{{ hits.album.release_date }}
+                    <button class="btn btn-default font-weight-bold" (click)="gotoDetail($event, hits.album.url)">
+                      連結
+                    </button>
+                  </span>
                 </div>
               </div>
               <div class="d-flex">
