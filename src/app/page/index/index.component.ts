@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core'
 import {OriginCardData} from '@my-app/components/origin-card'
+import {Datum} from '@my-app/core/model/kkbox/get-a-new-hits-playlist'
+import {GetANewHitsPlaylistService, GetChartPlaylistsService} from '@my-app/core/services/api/kkbox'
 import {NavbarService} from '@my-app/core/services/navbar.service'
 import {EmptyDataPipe, OrderByPipe} from '@my-app/pipes/index'
 import {BehaviorSubject} from 'rxjs'
-import {map} from 'rxjs/operators'
+import {map, switchMap, tap} from 'rxjs/operators'
 
 @Component({
   selector: 'app-index',
@@ -12,6 +14,10 @@ import {map} from 'rxjs/operators'
   providers: [OrderByPipe, EmptyDataPipe],
 })
 export class IndexComponent implements OnInit {
+  hitsTitle = ''
+  _hitPlaylist$ = new BehaviorSubject<Datum[]>([])
+  hitPlaylist$ = this._hitPlaylist$.asObservable()
+
   selectYear$ = new BehaviorSubject<string>('all')
   selectYearList: any[] = []
   books: OriginCardData[] = []
@@ -24,14 +30,52 @@ export class IndexComponent implements OnInit {
     describe: '',
   }
 
+  getANewHitsPlaylist$ = (playlist_id: string) =>
+    this.getANewHitsPlaylistService.getANewHitsPlaylist({playlist_id: playlist_id, territory: 'TW'}).pipe(
+      tap((hitsPlaylistResponse) => {
+        this._hitPlaylist$.next(hitsPlaylistResponse.tracks.data)
+      }),
+    )
+
   /** 建構子 */
   constructor(
     public navbarService: NavbarService,
     /**  orderByPipe：資料排序處理 */
     private orderByPipe: OrderByPipe,
+    private getChartPlaylistsService: GetChartPlaylistsService,
+    private getANewHitsPlaylistService: GetANewHitsPlaylistService,
   ) {}
 
   ngOnInit() {
+    //排行榜
+    this.getChartPlaylistsService
+      .getChartPlaylists({territory: 'TW'})
+      .pipe(
+        tap((res) => {
+          const playlist_id = res.data[0].id
+          this.hitsTitle = res.data.find((d) => d.id === playlist_id)?.title ?? ''
+        }),
+        switchMap((res) => {
+          const playlist_id = res.data[0].id
+          return this.getANewHitsPlaylist$(playlist_id)
+        }),
+      )
+      .subscribe()
+
+    //排行榜
+    // this.getChartPlaylistsService.getChartPlaylists({territory: 'TW'}).subscribe({
+    //     next: (res) => {
+    //       const playlist_id = res.data[0].id
+    //       this.hitsTitle = res.data.find((d) => d.id === playlist_id)?.title ?? ''
+    //       this.getANewHitsPlaylistService.getANewHitsPlaylist({playlist_id: playlist_id, territory: 'TW'}).subscribe({
+    //         next: (hitsPlaylistResponse) => {
+    //           this._hitPlaylist$.next(hitsPlaylistResponse.tracks.data)
+    //         },
+    //       })
+    //     },
+    //   })
+
+    //Sales by Country
     this.navbarService._searchData$
       .pipe(
         map((searchData2Res) => {
@@ -88,4 +132,6 @@ export class IndexComponent implements OnInit {
   showMessage($event: any) {
     this.cardDetail = $event
   }
+
+  gotoDetail($event: Event, url: string) {}
 }
