@@ -5,11 +5,12 @@ import {MatSelectModule} from '@angular/material/select'
 import {OriginCardModule} from 'src/app/shared/components/origin-card/origin-card.module'
 import {DirectiveModule} from 'src/app/shared/directive/directive.module'
 import {PipesModule} from './../../shared/pipes/pipes.module'
+import {DetailComponent} from './detail/detail.component'
 import {IndexRoutingModule} from './index-routing.module'
-import {IndexComponent} from './index.component'
+import {IndexComponent} from './index/index.component'
 
 @NgModule({
-  declarations: [IndexComponent],
+  declarations: [IndexComponent, DetailComponent],
   imports: [
     CommonModule,
     IndexRoutingModule,
