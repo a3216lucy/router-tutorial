@@ -36,5 +36,6 @@ import {PipesModule} from './shared/pipes/pipes.module'
     },
   ],
   bootstrap: [AppComponent],
+  exports: [],
 })
 export class AppModule {}
