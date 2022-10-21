@@ -1,0 +1,12 @@
+<!-- custom mat form field 元件 -->
+
+<mat-form-field class="w-100" appearance="outline">
+  <mat-label>email</mat-label>
+  <input matInput type="text" [formControl]="$any(control)" />
+  <button matSuffix mat-icon-button aria-label="Clear">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-error>
+    <app-control-messages [control]="control"></app-control-messages>
+  </mat-error>
+</mat-form-field>

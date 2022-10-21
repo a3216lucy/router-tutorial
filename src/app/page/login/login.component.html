@@ -77,25 +77,13 @@
               <div class="card-body">
                 <form role="form" #formRef="ngForm" [formGroup]="form" (ngSubmit)="login()">
                   <div class="mb-3">
-                    <input
-                      type="email"
-                      class="form-control form-control-lg"
-                      placeholder="Email"
-                      aria-label="Email"
-                      formControlName="email"
-                    />
-                    <mat-error>
-                      <app-control-messages [control]="form.controls['email']"></app-control-messages>
-                    </mat-error>
+                    <app-email-input [control]="form.controls['email']"></app-email-input>
                   </div>
                   <div class="mb-3">
-                    <input
-                      type="email"
-                      class="form-control form-control-lg"
-                      placeholder="Password"
-                      aria-label="Password"
+                    <app-password-input
                       formControlName="password"
-                    />
+                      [control]="form.controls['password']"
+                    ></app-password-input>
                   </div>
 
                   <div class="form-check form-switch">
@@ -110,7 +98,7 @@
               <div class="card-footer text-center pt-0 px-lg-2 px-1">
                 <p class="mb-4 text-sm mx-auto">
                   Don't have an account?
-                  <a href="javascript:;" class="text-primary text-gradient font-weight-bold">Sign up</a>
+                  <a routerLink="/register" class="text-primary text-gradient font-weight-bold">Sign up</a>
                 </p>
               </div>
             </div>
