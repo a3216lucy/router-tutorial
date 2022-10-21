@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
         validators: [UserValidationService.emailValidator],
         updateOn: 'submit',
       }),
-      password: this.fb.control('', {}),
+      password: this.fb.control('', {validators: [UserValidationService.passwordValidator]}),
       isRemember: this.fb.control(false, {}),
     })
   }
@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
    * 登入
    */
   login(): void {
+    console.log(this.form)
     this.form.markAllAsTouched()
     if (this.form.invalid) return
 
