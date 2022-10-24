@@ -8,7 +8,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {AppRoutingModule} from './app-routing.module'
 import {AppComponent} from './app.component'
 import {LayoutModule} from './layout/layout.module'
-import {TablesComponent} from './page/tables/tables.component'
 import {ApiInterceptor} from './shared/interceptors/api.interceptor'
 import {PipesModule} from './shared/pipes/pipes.module'
 
@@ -16,7 +15,7 @@ import {PipesModule} from './shared/pipes/pipes.module'
  * 根模組
  */
 @NgModule({
-  declarations: [AppComponent, TablesComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

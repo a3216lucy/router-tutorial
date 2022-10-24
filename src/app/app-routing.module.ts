@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core'
 import {RouterModule, Routes} from '@angular/router'
 import {AuthGuard} from './core/guards/auth.guard'
 import {LayoutComponent} from './layout/layout.component'
-import {TablesComponent} from './page/tables/tables.component'
 
 /** 根路由設定 */
 const routes: Routes = [
@@ -18,7 +17,10 @@ const routes: Routes = [
         loadChildren: () => import('./page/index/index.module').then((m) => m.IndexModule),
       },
       // 表格頁 tables
-      {path: 'tables', component: TablesComponent},
+      {
+        path: 'tables',
+        loadChildren: () => import('./page/tables/table.module').then((m) => m.TableModule),
+      },
     ],
     canActivate: [AuthGuard],
   },

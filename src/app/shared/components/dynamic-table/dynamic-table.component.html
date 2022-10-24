@@ -1,0 +1,33 @@
+<table class="table align-items-center mb-0" *ngIf="tableData?.data?.length">
+  <thead>
+    <tr>
+      <th
+        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+        *ngFor="let header of tableData.headers"
+      >
+        {{ header.key }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of tableData?.data">
+      <td *ngFor="let header of tableData.headers">
+        {{ $any(row)[header.key] }}
+        <!-- <div class="d-flex px-2 py-1">
+          <div class="d-flex flex-column justify-content-center">
+            <h6 class="mb-0 text-sm">{{ objItem.account }}</h6>
+            <p class="text-xs text-secondary mb-0">{{ objItem.id }}</p>
+          </div>
+        </div> -->
+      </td>
+      <!-- <td>
+        <ng-container *ngIf="Object.prototype.hasOwnProperty.call(objItem, 'pet')">
+          <p *ngFor="let petItem of objItem.pet">
+            <span>寵物: {{ petItem.category }}</span>
+            <span>顏色: {{ petItem.color }}</span>
+          </p>
+        </ng-container>
+      </td> -->
+    </tr>
+  </tbody>
+</table>

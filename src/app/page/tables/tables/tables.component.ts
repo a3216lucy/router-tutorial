@@ -1,21 +1,9 @@
-import {Component} from '@angular/core'
+import {AfterViewInit, Component, ViewChild} from '@angular/core'
+import {DynamicTableComponent} from '@my-app/components/dynamic-table/dynamic-table.component'
 import {Data} from '@my-app/core/model/data.interface'
 import {ProjectData} from '@my-app/core/model/projectData.interface'
 import {EmptyDataPipe} from 'src/app/shared/pipes/empty-data.pipe'
 import {PricePipe} from 'src/app/shared/pipes/price.pipe'
-
-/** 物件資料 */
-export interface Obj {
-  id: string
-  account: string
-  pet?: Pet[]
-}
-
-/** 寵物明細 */
-export interface Pet {
-  category: string
-  color: string
-}
 
 /** 表格頁面 */
 @Component({
@@ -24,23 +12,9 @@ export interface Pet {
   styleUrls: ['./tables.component.scss'],
   providers: [PricePipe, EmptyDataPipe],
 })
-export class TablesComponent {
-  /** JavaScript */
-  Object = Object
-
-  /** 寵物資料 */
-  obj: Obj[] = [
-    {
-      id: '01',
-      account: '',
-      pet: [{category: 'cat', color: 'white'}],
-    },
-    {
-      id: '02',
-      account: '',
-    },
-  ]
-
+export class TablesComponent implements AfterViewInit {
+  @ViewChild('dynamicTableARef') dynamicTableARef!: DynamicTableComponent
+  @ViewChild('dynamicTableBRef') dynamicTableBRef!: DynamicTableComponent
   /** 表格資料 */
   data: Array<Data> = [
     {
@@ -121,5 +95,39 @@ export class TablesComponent {
    */
   printConsole(data: Data | ProjectData): void {
     console.log(data)
+  }
+
+  ngAfterViewInit() {
+    this.renderTableA()
+    this.renderTableB()
+  }
+
+  renderTableA() {
+    const headers = ['id', 'account'].map((header, headerIndex) => ({key: header, index: headerIndex}))
+    const data: any[] = [
+      {
+        id: '01',
+        account: 'cat',
+        pet: [{category: 'cat', color: 'white'}],
+      },
+      {
+        id: '02',
+        account: 'dog',
+      },
+      {
+        id: '03',
+        account: '',
+      },
+    ]
+    this.dynamicTableARef.render(headers, data)
+  }
+
+  renderTableB() {
+    const tableBHeaders = ['project', 'budget', 'status', 'completion'].map((header, headerIndex) => ({
+      key: header,
+      index: headerIndex,
+    }))
+    const tableBData: any[] = this.projectData
+    this.dynamicTableBRef.render(tableBHeaders, tableBData)
   }
 }
