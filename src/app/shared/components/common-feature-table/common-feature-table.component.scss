@@ -1,0 +1,10 @@
+.rwd-table {
+  color: #4b4e53;
+  min-width: 100%;
+  position: relative;
+}
+@media (max-width: 767px) {
+  .rwd-table {
+    margin: 0;
+  }
+}

@@ -1,0 +1,75 @@
+<div class="table status-list">
+  <table [class]="'rwd-table ' + tableClass">
+    <thead>
+      <tr>
+        <th *ngFor="let column of columns" [class]="column.thClass">
+          <ng-container *ngIf="column.header">
+            {{ header(column, data[0]) }}
+          </ng-container>
+          <ng-container *ngIf="column.subHeader">
+            <br />
+            {{ subHeader(column, data[0]) }}
+          </ng-container>
+          <ng-container *ngIf="column.thirdHeader">
+            <br />
+            {{ thirdHeader(column, data[0]) }}
+          </ng-container>
+        </th>
+      </tr>
+    </thead>
+
+    <ng-container *ngIf="dataList && dataList.length !== 0; else noData">
+      <tbody>
+        <tr *ngFor="let data of dataList; let index = index" (click)="trClick.emit(data)">
+          <td
+            *ngFor="let column of columns"
+            [class]="column.tdClass"
+            [attr.data-th]="
+              column.thirdHeader
+                ? header(column, data) + '&#xa;' + subHeader(column, data) + '&#xa;' + thirdHeader(column, data)
+                : column.subHeader
+                ? header(column, data) + '&#xa;' + subHeader(column, data)
+                : header(column, data)
+            "
+          >
+            <ng-container *ngIf="!column?.useSlot && column?.accessor; then default"> </ng-container>
+            <ng-container *ngIf="column?.useSlot; then slot"> </ng-container>
+
+            <ng-template #slot>
+              <ng-container
+                *ngTemplateOutlet="templateRef; context: getTableViewContext(column, data, index)"
+              ></ng-container>
+            </ng-template>
+
+            <ng-template #default>
+              <div *ngIf="column.cell" [innerHtml]="column.cell(data)"></div>
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </ng-container>
+    <ng-template #noData>
+      <tbody>
+        <tr>
+          <td
+            *ngFor="let column of columns"
+            [attr.data-th]="
+              column.thirdHeader
+                ? header(column, data) + '&#xa;' + subHeader(column, data) + '&#xa;' + thirdHeader(column, data)
+                : column.subHeader
+                ? header(column, data) + '&#xa;' + subHeader(column, data)
+                : header(column, data)
+            "
+          >
+            -
+          </td>
+        </tr>
+      </tbody>
+    </ng-template>
+  </table>
+  <!-- 載入更多按鈕 -->
+  <div *ngIf="policyLength > dataList.length" class="item-more d-block w-100 text-center" (click)="loadMoreData()">
+    <a>載入更多</a>
+  </div>
+  <!-- 載入更多按鈕 end -->
+</div>
