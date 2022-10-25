@@ -153,7 +153,7 @@ export class TablesComponent implements AfterViewInit {
             thClass: 'text-uppercase text-secondary text-xxs font-weight-bolder opacity-7',
             header: '作者',
             cell: (data: Data) => `
-            <div class="d-flex px-2 py-1">
+            <div class="d-flex px-2 py-1" style="background-color:red">
             <div>
               <img src="${data.authorUrl}" class="avatar avatar-sm me-3" alt="user1" />
             </div>

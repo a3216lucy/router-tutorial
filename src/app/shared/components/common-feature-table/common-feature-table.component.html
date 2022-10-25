@@ -42,7 +42,7 @@
             </ng-template>
 
             <ng-template #default>
-              <div *ngIf="column.cell" [innerHtml]="column.cell(data)"></div>
+              <div *ngIf="column.cell" [innerHtml]="$any(column.cell(data)) | safeHtml"></div>
             </ng-template>
           </td>
         </tr>
